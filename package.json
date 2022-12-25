@@ -14,5 +14,13 @@
   "bugs": {
     "url": "https://github.com/jpark42/animeFlix-client/issues"
   },
-  "homepage": "https://github.com/jpark42/animeFlix-client#readme"
+  "homepage": "https://github.com/jpark42/animeFlix-client#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.2",
+    "process": "^0.11.10"
+  }
 }

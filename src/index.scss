@@ -1,0 +1,7 @@
+//This is a good way of checking that the build process has worked. SCSS will fail to directly render in the browser unless the build process has successfully transpiled the SCSS into CSS
+
+$color: steelblue;
+
+.my-flix {
+  color: $color;
+}
