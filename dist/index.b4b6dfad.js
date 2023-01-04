@@ -27273,48 +27273,30 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            title: "Your Name",
-            image: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: "images/your_name.jpg"
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 13,
-                columnNumber: 9
-            }, undefined),
-            description: "High-schoolers Mitsuha and Taki are complete Strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki's body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
-            genre: "Romance",
-            director: "Makoto Shinkai",
-            featured: false
+            Title: "Your Name",
+            ImagePath: "https://m.media-amazon.com/images/I/91PiMHRTXXL._AC_UY327_FMwebp_QL65_.jpg",
+            Description: "High-schoolers Mitsuha and Taki are complete Strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki's body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
+            Genre: "Romance",
+            Director: "Makoto Shinkai",
+            Featured: false
         },
         {
             id: 2,
-            title: "Spirited Away",
-            image: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: "images/spirited_away.jpg"
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 23,
-                columnNumber: 9
-            }, undefined),
-            description: "The movie tells the story of Chihiro, a young girl on a mission to rescue her family from the evil witch Yubaba, who turned them into pigs.",
-            genre: "Adventure",
-            director: "Hayao Miyazaki",
-            featured: false
+            Title: "Spirited Away",
+            ImagePath: "https://m.media-amazon.com/images/I/81UgaIU1ToL._AC_UY327_FMwebp_QL65_.jpg",
+            Description: "The movie tells the story of Chihiro, a young girl on a mission to rescue her family from the evil witch Yubaba, who turned them into pigs.",
+            Genre: "Adventure",
+            Director: "Hayao Miyazaki",
+            Featured: false
         },
         {
             id: 3,
-            title: "A Silent Voice",
-            image: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: "images/a_silent_voice.jpg"
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 33,
-                columnNumber: 9
-            }, undefined),
-            description: "This follows a moving story of Shoya Ishida, a school bully, and Shoko Nishimiya, a young girl with a hearing disability. Their story begins in sixth grade when Shoko transfer's to Shoya's elemnetary school and quickly finds herself bullied and isolated due to her hearing disability.",
-            genre: "Romance",
-            director: "Maoko Yamada",
-            featured: false
+            Title: "A Silent Voice",
+            ImagePath: "https://m.media-amazon.com/images/I/81fp8wUrHuL._AC_UY327_FMwebp_QL65_.jpg",
+            Description: "This follows a moving story of Shoya Ishida, a school bully, and Shoko Nishimiya, a young girl with a hearing disability. Their story begins in sixth grade when Shoko transfer's to Shoya's elemnetary school and quickly finds herself bullied and isolated due to her hearing disability.",
+            Genre: "Romance",
+            Director: "Maoko Yamada",
+            Featured: false
         }
     ]);
     /*Need to create a new state to identify whether there was a user click or not*/ const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null); //Initial value of selectedMovie is null to tell the app that no movies were clicked, but it's state would be updated when a user clicks on a movie to render it's details
@@ -27323,7 +27305,7 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 46,
+        lineNumber: 43,
         columnNumber: 7
     }, undefined) //Assigning "null" to the selectedMovie state will allow MainView to stop rendering <MovieView ... /> The conditional if(selectedMovie) will return false, thus skip returning <MovieView ... />
     ;
@@ -27331,7 +27313,7 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 50,
+        lineNumber: 47,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27343,16 +27325,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 56,
+                lineNumber: 53,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 54,
+        lineNumber: 51,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "qLujnaC9uzYUj6/J8QGXFDIvbe0=");
+_s(MainView, "tkfcOegbT7J0xhuyTVBUPXPq15s=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27362,7 +27344,71 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"35i52","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5zMSv","../movie-card/movie-card":"bwuIu"}],"ggaUx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"35i52","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5zMSv"}],"bwuIu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$67b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const MovieCard = ({ movie , onMovieClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        /*passed a callback function to onClick and then added logic to onMovieClick(movie) that you need to execute once a click event is registered*/ onClick: ()=>{
+            onMovieClick(movie); //reusing a prop that was used earlier
+        },
+        children: movie.Title
+    }, void 0, false, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 5,
+        columnNumber: 7
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"35i52","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5zMSv"}],"35i52":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27378,7 +27424,7 @@ const MovieView = ({ movie , onBackClick  })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image
+                    src: movie.ImagePath
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 7,
@@ -27399,7 +27445,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.title
+                        children: movie.Title
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 11,
@@ -27421,7 +27467,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.description
+                        children: movie.Description
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 15,
@@ -27443,7 +27489,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.genre
+                        children: movie.Genre
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 18,
@@ -27465,7 +27511,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.director
+                        children: movie.Director
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 22,
@@ -27487,7 +27533,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.featured
+                        children: movie.Featured
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 26,
@@ -27523,70 +27569,6 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"35i52","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5zMSv"}],"35i52":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"bwuIu":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$67b2.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const MovieCard = ({ movie , onMovieClick  })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        /*passed a callback function to onClick and then added logic to onMovieClick(movie) that you need to execute once a click event is registered*/ onClick: ()=>{
-            onMovieClick(movie); //reusing a prop that was used earlier
-        },
-        children: movie.title
-    }, void 0, false, {
-        fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 5,
-        columnNumber: 7
-    }, undefined);
-};
-_c = MovieCard;
-var _c;
-$RefreshReg$(_c, "MovieCard");
-
-  $parcel$ReactRefreshHelpers$67b2.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"35i52","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5zMSv"}]},["aQ7I5","8idTW","d8Dch"], "d8Dch", "parcelRequire9175")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"35i52","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5zMSv"}]},["aQ7I5","8idTW","d8Dch"], "d8Dch", "parcelRequire9175")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

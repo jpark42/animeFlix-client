@@ -8,7 +8,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
           onMovieClick(movie); //reusing a prop that was used earlier
         }}
       >
-        {movie.title}
+        {movie.Title}
       </div>
     );
   };

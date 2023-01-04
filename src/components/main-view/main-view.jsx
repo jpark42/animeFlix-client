@@ -8,33 +8,30 @@ export const MainView = () => {
   const [movies, setMovies] = useState([
     {
       id: 1,
-      title: "Your Name",
-      image:
-        <img src="images/your_name.jpg" />,
-      description: "High-schoolers Mitsuha and Taki are complete Strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki's body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
-      genre: "Romance",
-      director: "Makoto Shinkai",
-      featured: false,
+      Title: "Your Name",
+      ImagePath: "https://m.media-amazon.com/images/I/91PiMHRTXXL._AC_UY327_FMwebp_QL65_.jpg",
+      Description: "High-schoolers Mitsuha and Taki are complete Strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki's body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
+      Genre: "Romance",
+      Director: "Makoto Shinkai",
+      Featured: false,
     },
     {
       id: 2,
-      title: "Spirited Away",
-      image:
-        <img src="images/spirited_away.jpg" />,
-      description: "The movie tells the story of Chihiro, a young girl on a mission to rescue her family from the evil witch Yubaba, who turned them into pigs.",
-      genre: "Adventure",
-      director: "Hayao Miyazaki",
-      featured: false,
+      Title: "Spirited Away",
+      ImagePath:"https://m.media-amazon.com/images/I/81UgaIU1ToL._AC_UY327_FMwebp_QL65_.jpg",
+      Description: "The movie tells the story of Chihiro, a young girl on a mission to rescue her family from the evil witch Yubaba, who turned them into pigs.",
+      Genre: "Adventure",
+      Director: "Hayao Miyazaki",
+      Featured: false,
     },
     {
       id: 3,
-      title: "A Silent Voice",
-      image:
-        <img src="images/a_silent_voice.jpg" />,
-      description: "This follows a moving story of Shoya Ishida, a school bully, and Shoko Nishimiya, a young girl with a hearing disability. Their story begins in sixth grade when Shoko transfer's to Shoya's elemnetary school and quickly finds herself bullied and isolated due to her hearing disability.",
-      genre: "Romance",
-      director: "Maoko Yamada",
-      featured: false,
+      Title: "A Silent Voice",
+      ImagePath:"https://m.media-amazon.com/images/I/81fp8wUrHuL._AC_UY327_FMwebp_QL65_.jpg",
+      Description: "This follows a moving story of Shoya Ishida, a school bully, and Shoko Nishimiya, a young girl with a hearing disability. Their story begins in sixth grade when Shoko transfer's to Shoya's elemnetary school and quickly finds herself bullied and isolated due to her hearing disability.",
+      Genre: "Romance",
+      Director: "Maoko Yamada",
+      Featured: false,
     },
   ]);
 
