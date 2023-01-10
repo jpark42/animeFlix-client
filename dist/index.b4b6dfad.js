@@ -27270,19 +27270,42 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([]);
+    const [movies, setMovies] = (0, _react.useState)([
+        {
+            id: 1,
+            Title: "Your Name",
+            ImagePath: "https://m.media-amazon.com/images/I/91PiMHRTXXL._AC_UY327_FMwebp_QL65_.jpg",
+            Description: "High-schoolers Mitsuha and Taki are complete Strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki's body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
+            Genre: "Romance",
+            Director: "Makoto Shinkai",
+            Featured: false
+        },
+        {
+            id: 2,
+            Title: "Spirited Away",
+            ImagePath: "https://m.media-amazon.com/images/I/81UgaIU1ToL._AC_UY327_FMwebp_QL65_.jpg",
+            Description: "The movie tells the story of Chihiro, a young girl on a mission to rescue her family from the evil witch Yubaba, who turned them into pigs.",
+            Genre: "Adventure",
+            Director: "Hayao Miyazaki",
+            Featured: false
+        },
+        {
+            id: 3,
+            Title: "A Silent Voice",
+            ImagePath: "https://m.media-amazon.com/images/I/81fp8wUrHuL._AC_UY327_FMwebp_QL65_.jpg",
+            Description: "This follows a moving story of Shoya Ishida, a school bully, and Shoko Nishimiya, a young girl with a hearing disability. Their story begins in sixth grade when Shoko transfer's to Shoya's elemnetary school and quickly finds herself bullied and isolated due to her hearing disability.",
+            Genre: "Romance",
+            Director: "Maoko Yamada",
+            Featured: false
+        }
+    ]);
     /*Need to create a new state to identify whether there was a user click or not*/ const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null); //Initial value of selectedMovie is null to tell the app that no movies were clicked, but it's state would be updated when a user clicks on a movie to render it's details
-    (0, _react.useEffect)(()=>{
-        fetch("https://myanimeflix.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            console.log("movies from api:", data);
-        });
-    }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 23,
+        lineNumber: 43,
         columnNumber: 7
     }, undefined) //Assigning "null" to the selectedMovie state will allow MainView to stop rendering <MovieView ... /> The conditional if(selectedMovie) will return false, thus skip returning <MovieView ... />
     ;
@@ -27290,7 +27313,7 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 27,
+        lineNumber: 47,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27302,16 +27325,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 33,
+                lineNumber: 53,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 51,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
+_s(MainView, "tkfcOegbT7J0xhuyTVBUPXPq15s=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
