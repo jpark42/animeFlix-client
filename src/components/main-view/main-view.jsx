@@ -6,6 +6,9 @@ import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+  
+  /*Need to create a new state to identify whether there was a user click or not*/
+  const [selectedMovie, setSelectedMovie] = useState(null); //Initial value of selectedMovie is null to tell the app that no movies were clicked, but it's state would be updated when a user clicks on a movie to render it's details
   useEffect(() => {
     fetch("https://myanimeflix.herokuapp.com/movies")
     .then((response) => response.json())
@@ -13,11 +16,8 @@ export const MainView = () => {
       console.log("movies from api:", data);
     });
   }, []);
+
   
-
-  /*Need to create a new state to identify whether there was a user click or not*/
-  const [selectedMovie, setSelectedMovie] = useState(null); //Initial value of selectedMovie is null to tell the app that no movies were clicked, but it's state would be updated when a user clicks on a movie to render it's details
-
   if (selectedMovie) {
     return (
       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} /> //Assigning "null" to the selectedMovie state will allow MainView to stop rendering <MovieView ... /> The conditional if(selectedMovie) will return false, thus skip returning <MovieView ... />

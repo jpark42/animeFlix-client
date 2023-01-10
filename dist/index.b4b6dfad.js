@@ -27271,12 +27271,12 @@ var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
+    /*Need to create a new state to identify whether there was a user click or not*/ const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null); //Initial value of selectedMovie is null to tell the app that no movies were clicked, but it's state would be updated when a user clicks on a movie to render it's details
     (0, _react.useEffect)(()=>{
-        fetch("https://myanimeflix.herokuapp.com/").then((response)=>response.json()).then((data)=>{
+        fetch("https://myanimeflix.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             console.log("movies from api:", data);
         });
     }, []);
-    /*Need to create a new state to identify whether there was a user click or not*/ const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null); //Initial value of selectedMovie is null to tell the app that no movies were clicked, but it's state would be updated when a user clicks on a movie to render it's details
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
@@ -27311,7 +27311,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "llzgrUkvR/+OoCNfiqlA1H2LLFI=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
