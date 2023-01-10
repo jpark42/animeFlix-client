@@ -7,7 +7,7 @@ import { MovieView } from "../movie-view/movie-view";
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    fetch("https://myanimeflix.herokuapp.com/")
+    fetch("https://myanimeflix.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
       console.log("movies from api:", data);
