@@ -49,9 +49,9 @@ export const MainView = () => {
 
   return (
     <div>
-      {movies.map((movie) => (
+      {movies.map((movie) => ( //Map() method creates a new array populated with the results of calling a provided function on every element in the calling array
         <MovieCard
-          key={movie.id}
+          key={movie.id} // Key attribute must be unique and is used so that React can easily find elements in your list to be changed or removed from the DOM
           movie={movie} //this is how you pass data to a child component. This is attribute is referred to as "props"
           onMovieClick={(newSelectedMovie) => {
             //Pass a function as a prop through onMovieClick. It has a function with one paramater that represents the book to be set to selectedMovie state
