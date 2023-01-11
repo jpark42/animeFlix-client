@@ -13,7 +13,20 @@ export const MainView = () => {
     fetch("https://myanimeflix.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
-      console.log("movies from api:", data);
+      //console.log("movies from api:", data);
+      const moviesFromApi = data.movie.map((movie) => {
+        return {
+          id: movie._id,
+          Title: movie.Title,
+          Description: movie.Description,
+          Genre: movie.Genre,
+          Director: movie.Director,
+          ImagePath: movie.ImagePath,
+          Featured: movie.Featured
+        };
+      });
+      //setMovies callback from useState() Hook updates the state of the component, updating the UI
+      setMovies(moviesFromApi);
     });
   }, []);
 
