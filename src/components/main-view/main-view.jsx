@@ -14,15 +14,15 @@ export const MainView = () => {
     .then((response) => response.json())
     .then((data) => {
       //console.log("movies from api:", data);
-      const moviesFromApi = data.map((data) => {
+      const moviesFromApi = data.map((movie) => {
         return { 
-          id: data._id,
-          Title: data.Title,
-          Description: data.Description,
-          Genre: data.Genre,
-          Director: data.Director,
-          ImagePath: data.ImagePath,
-          Featured: data.Featured
+          id: movie._id,
+          Title: movie.Title,
+          Description: movie.Description, 
+          Genre: movie.Genre,
+          Director: movie.Director,
+          ImagePath: movie.ImagePath,
+          Featured: movie.Featured
         };
       });
       //setMovies callback from useState() Hook updates the state of the component, updating the UI
