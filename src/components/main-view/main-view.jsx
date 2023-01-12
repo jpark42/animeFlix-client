@@ -13,6 +13,7 @@ export const MainView = () => {
     fetch("https://myanimeflix.herokuapp.com/movies")
     .then((response) => response.json())
     .then((data) => {
+    setMovies(data)
       //console.log("movies from api:", data);
       const moviesFromApi = data.map((movie) => {
         return { 
