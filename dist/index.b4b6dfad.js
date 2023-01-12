@@ -28312,7 +28312,7 @@ const MovieView = ({ movie , onBackClick  })=>{
 };
 _c = MovieView;
 // Here is where we define all the props constraints for the BookCard
-MovieCard.propTypes = {
+MovieView.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string,
         Description: (0, _propTypesDefault.default).string,
@@ -28327,7 +28327,7 @@ MovieCard.propTypes = {
             Birth: (0, _propTypesDefault.default).string.isRequired,
             Death: (0, _propTypesDefault.default).string.isRequired
         }).isRequired,
-        Featured: (0, _propTypesDefault.default).boolean.isRequired
+        Featured: (0, _propTypesDefault.default).boolean
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
