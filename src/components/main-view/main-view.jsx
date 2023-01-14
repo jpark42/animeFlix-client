@@ -21,9 +21,10 @@ export const MainView = () => {
           Genre: movie.Genre,
           Director: movie.Director,
           ImagePath: movie.ImagePath,
-          Featured: movie.Featured
+          Featured: movie.Featured || false
         }
       ));
+      console.log(moviesFromApi)
 
       //setMovies callback from useState() Hook updates the state of the component, updating the UI
       setMovies(moviesFromApi);

@@ -24,7 +24,7 @@ export const MovieView = ({ movie, onBackClick }) => {
         </div>
         <div>
           <span>Featured: </span>
-          <span>{movie.Featured}</span>
+          <span>{movie.Featured ? 'Yes' : 'No'}</span>
         </div>
         <button onClick={onBackClick}>Back</button>
       </div>
@@ -39,7 +39,7 @@ MovieView.propTypes = {
     ImagePath: PropTypes.string,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
-      Description: PropTypes.isRequired
+      Description: PropTypes.string.isRequired
     }).isRequired,
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
@@ -47,7 +47,7 @@ MovieView.propTypes = {
       Birth: PropTypes.string.isRequired,
       Death: PropTypes.string.isRequired
     }).isRequired,
-    Featured: PropTypes.boolean,
+    Featured: PropTypes.bool,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
 };
