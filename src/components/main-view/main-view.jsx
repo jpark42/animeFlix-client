@@ -1,14 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
+import { SignupView } from "../signup-view/signup-view";
+
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser? storedUser : null); //When you reload the page, the user and token will be initialized with what is in localStorage. If it’s empty, both will be initialized with null
+  const [token, setToken] = useState(storedToken? storedToken : null); //null represents the state when no user is logged in for both token and user
   const [movies, setMovies] = useState([]);
-  
   /*Need to create a new state to identify whether there was a user click or not*/
   const [selectedMovie, setSelectedMovie] = useState(null); //Initial value of selectedMovie is null to tell the app that no movies were clicked, but it's state would be updated when a user clicks on a movie to render it's details
+  
+  
+  //Token state is initally blank, meaning no movies are loaded. This will set it to the token you get back from the login API. At that moment, the UI will update and load the list of movies using the token
+  useEffect(() => {
+    if (!token) { //if statement added to check for token, as there’s no reason to execute the fetch call if there’s no token yet.
+      return;
+    }
+
+    fetch("https://myanimeflix.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` } //Passing bearer authorization in the header of your HTTP requests allows you to make authenticated requests to your API
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+  }, [token]); //2nd arugment of useEffect() is token as a dependency array. It ensures fetch is called every time token changes  
+
+
   useEffect(() => {
     fetch("https://myanimeflix.herokuapp.com/movies")
     .then((response) => response.json())
@@ -21,7 +44,7 @@ export const MainView = () => {
           Genre: movie.Genre,
           Director: movie.Director,
           ImagePath: movie.ImagePath,
-          Featured: movie.Featured || false
+          Featured: movie.Featured || false //logical operator. Show true OR false
         }
       ));
       console.log(moviesFromApi)
@@ -34,7 +57,23 @@ export const MainView = () => {
     });
   }, []);
 
+
+  if (!user) {
+    //Pass a prop from MainView with a callback function that will update the current user.
+    return (
+      <>
+      <LoginView //When  no one is logged in, LoginView is displayed
+        onLoggedIn={(user, token) => { 
+          setUser(user); //storing user as a state variable for setUser
+          setToken(token);//storing token as a state variable for setToken
+        }} />
+      or
+      <SignupView />
+      </>
+    );
+  }
   
+
   if (selectedMovie) {
     return (
       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} /> //Assigning "null" to the selectedMovie state will allow MainView to stop rendering <MovieView ... /> The conditional if(selectedMovie) will return false, thus skip returning <MovieView ... />
@@ -43,6 +82,7 @@ export const MainView = () => {
   if (movies.length === 0) {
     return <div>The list is empty!</div>;
   }
+
 
   return (
     <div>
@@ -56,6 +96,15 @@ export const MainView = () => {
           }}
         />
       ))}
+      <button
+        onClick={() => {
+          setUser(null); //nullify user once user logs out
+          setToken(null); //nullify token once user logs out
+          localStorage.clear(); //clear localStorage once user logs out. If you refresh, user will have to login again 
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 };

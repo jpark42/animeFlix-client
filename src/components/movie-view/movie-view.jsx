@@ -24,14 +24,14 @@ export const MovieView = ({ movie, onBackClick }) => {
         </div>
         <div>
           <span>Featured: </span>
-          <span>{movie.Featured ? 'Yes' : 'No'}</span>
+          <span>{movie.Featured ? 'Yes' : 'No'}</span> //conditional operator to display Yes if truthy, or No if falsy
         </div>
         <button onClick={onBackClick}>Back</button>
       </div>
     );
   };
 
-// Here is where we define all the props constraints for the BookCard
+// Here is where we define all the props constraints for the MovieCard
 MovieView.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string,
@@ -49,5 +49,5 @@ MovieView.propTypes = {
     }).isRequired,
     Featured: PropTypes.bool,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired
 };
