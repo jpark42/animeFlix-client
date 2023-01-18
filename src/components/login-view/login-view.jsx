@@ -14,12 +14,12 @@ export const LoginView = ({ onLoggedIn}) => {
       secret: password
     };
 
-    fetch('https://myanimeflix.herokuapp.com/login?Username=${username}&Password=${password}', {
+    fetch(`https://myanimeflix.herokuapp.com/login?Username=${username}&Password=${password}`, {
       method: "POST",
       headers: {
         "Content-Type": "application.json"
       },
-      body: JSON.stringify(data)
+      //body: JSON.stringify(data)
     })
     .then((response) => response.json()) //This transforms the response content into a JSON object that your code can use to extract the JWT sent by your API
     .then((data) => {
