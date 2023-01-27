@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { API_URL } from "../../constants";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -13,7 +16,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: password,
     };
 
-    fetch("http://localhost:8080/login", {
+    fetch(`${API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +48,7 @@ export const LoginView = ({ onLoggedIn }) => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)} //Assigning the value of the form fields to two new state variables so you can use them here. This is known as binding
-          minLength="6"
+          minLength="5"
           required
         />
       </label>
@@ -55,7 +58,7 @@ export const LoginView = ({ onLoggedIn }) => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)} //Assigning the value of the form fields to two new state variables so you can use them here. This is known as binding
-          minLength="6"
+          minLength="5"
           required
         />
       </label>

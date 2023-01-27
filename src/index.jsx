@@ -1,8 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import { MainView } from "./components/main-view/main-view";
 
+// Import bootstrap CSS file
+import "bootstrap/dist/css/bootstrap.min.css";
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
 
@@ -17,4 +19,3 @@ const root = createRoot(container);
 
 // Tells React to render your app in the root DOM element
 root.render(<MyAnimeFlixApp />);
-

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { API_URL } from "../../constants";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +19,7 @@ export const SignupView = () => {
       Birthday: birthday,
     };
 
-    fetch("https://myanimeflix.herokuapp.com/users", {
+    fetch(`${API_URL}/users`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -25,7 +28,7 @@ export const SignupView = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful!");
-        window.location.reload(); //The page reloads when the user signs up sucessfully so that the new user can login
+        // window.location.reload(); //The page reloads when the user signs up sucessfully so that the new user can login
       } else {
         alert("Signup failed");
       }
