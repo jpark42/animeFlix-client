@@ -1,7 +1,52 @@
-//This is a good way of checking that the build process has worked. SCSS will fail to directly render in the browser unless the build process has successfully transpiled the SCSS into CSS
 
-$color: steelblue;
+$color: whitesmoke;
+$primary-color: #0e0e0e;
+$secondary-color: SlateBlue;
+$accent-color: Violet;
 
-.my-flix {
-  color: $color;
+$body-bg: $primary-color;
+
+
+$body-color: $color;
+
+.card-color {
+  color: $primary-color
 }
+
+.login-font {
+  color: $color
+}
+
+.movie-header-font {
+  color: $secondary-color;
+}
+
+Button.main {
+  padding: 4px 12px 4px 12px;
+  color: $color;
+  background-color: $secondary-color;
+  border: none;
+  border-radius: 4px;
+  cursor: "pointer"; 
+}
+
+Button.secondary {
+  padding: 4px 12px 4px 12px;
+  color: $primary-color;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 4px;
+  cursor: "pointer"; 
+}
+
+.movie-view-img {
+  max-height: 450px;
+}
+.movie-card-img {
+  max-height: 350px;
+}
+
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+//This is a good way of checking that the build process has worked. SCSS will fail to directly render in the browser unless the build process has successfully transpiled the SCSS into CSS

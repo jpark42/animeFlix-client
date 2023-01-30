@@ -1,17 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Card } from "react-bootstrap";
+import { Row, Col, Button, Card } from "react-bootstrap";
 
+/*passed a callback function to onClick and then added logic to onMovieClick (movie) that you need to execute once a click even is registered*/
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <div
-      /*passed a callback function to onClick and then added logic to onMovieClick(movie) that you need to execute once a click event is registered*/
-      onClick={() => {
-        onMovieClick(movie); //reusing a prop that was used earlier
-      }}
-    >
-      {movie.Title}
-    </div>
+    <Card className="h-100 card-color">
+      <Row>
+        <Col className="h-100 text-center mt-3">
+          <Card.Img
+            variant="top"
+            src={movie.ImagePath}
+            className="img-fluid h-100 w-auto movie-card-img"
+          />
+        </Col>
+      </Row>
+
+      <Card.Body className="d-flex flex-column text-center">
+        <Card.Title className="mt-3">
+          <h3>{movie.Title}</h3>
+        </Card.Title>
+        <Card.Text classname="my-0">
+          <h5>{movie.Director.Name}</h5>
+        </Card.Text>
+        <div className="mt-auto text-center">
+          <Button
+            className="main"
+            onClick={() => {
+              onMovieClick(movie);
+            }}
+          >
+            Details
+          </Button>
+        </div>
+      </Card.Body>
+    </Card>
   );
 };
 
