@@ -5,6 +5,9 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { API_URL } from "../../constants";
+import { Row, Col, Button } from "react-bootstrap";
+
+import "../../index.scss";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -53,7 +56,70 @@ export const MainView = () => {
       });
   }, [token]); //2nd arugment of useEffect() is token as a dependency array. It ensures fetch is called every time token changes
 
-  //comment out this section and the app will display without login?
+  return (
+    <Row className="justify-content-md-center">
+      {!user ? ( //Pass a prop from MainView with a callback function that will update the current user.
+        <Col md={6}>
+          <div className="mx-4 mt-2 text-center login-font">Login</div>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          <div className="mx-4 mt-2 text-center login-font">
+            Don't have an account? <br />
+            Registrate now!
+          </div>
+          <SignupView />
+        </Col>
+      ) : selectedMovie ? (
+        <Col md={8}>
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={() => setSelectedMovie(null)} //Assigning "null" to the selectedMovie state will allow MainView to stop rendering <MovieView ... /> The conditional if(selectedMovie) will return false, thus skip returning <MovieView ... />
+          />
+        </Col>
+      ) : movies.length === 0 ? (
+        <div>The list is empty!</div>
+      ) : (
+        <>
+          {movies.map(
+            (
+              movie //Map() method creates a new array populated with the results of calling a provided function on every element in the calling array
+            ) => (
+              // Key attribute must be unique and is used so that React can easily find elements in your list to be changed or removed from the DOM
+              <Col key={movie.id} className="mb-5" xs={12} sm={6} md={4}>
+                <MovieCard
+                  movie={movie} //this is how you pass data to a child component. This is attribute is referred to as "props"
+                  onMovieClick={(newSelectedMovie) => {
+                    //Pass a function as a prop through onMovieClick. It has a function with one paramater that represents the book to be set to selectedMovie state
+                    setSelectedMovie(newSelectedMovie); //this is the setter function that was created earlier in useState(
+                  }}
+                />
+              </Col>
+            )
+          )}
+          <div className="mt-auto text-center">
+            <Button
+              onClick={() => {
+                setUser(null); //nullify user once user logs out
+                setToken(null); //nullify token once user logs out
+                localStorage.clear(); //clear localStorage once user logs out. If you refresh, user will have to login again
+              }}
+              className="secondary w-auto"
+              size="lg"
+            >
+              Logout
+            </Button>
+          </div>
+        </>
+      )}
+    </Row>
+  );
+};
+
+/*
   if (!user) {
     //Pass a prop from MainView with a callback function that will update the current user.
     return (
@@ -69,6 +135,7 @@ export const MainView = () => {
       </>
     );
   }
+
 
   if (selectedMovie) {
     return (
@@ -110,3 +177,4 @@ export const MainView = () => {
     </div>
   );
 };
+*/
