@@ -20,7 +20,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         <Card.Title className="mt-3">
           <h3>{movie.Title}</h3>
         </Card.Title>
-        <Card.Text classname="my-0">
+        <Card.Text className="my-0">
           <h5>{movie.Director.Name}</h5>
         </Card.Text>
         <div className="mt-auto text-center">
