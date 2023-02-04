@@ -1,8 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Row, Col, Button } from "react-bootstrap";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
+
+  const movie = movies.find((m) => m.id === movieId);
+
   return (
     //Make it so that the img goes on top of the movie text when screen is smaller
     <Row className="d-flex flex-row-reverse p-3">
@@ -19,7 +25,7 @@ export const MovieView = ({ movie, onBackClick }) => {
               <span>Title: </span>
               <span>{movie.Title}</span>
             </h3>
-            <h5 className="mt-1 text-lef">
+            <h5 className="mt-1 text-left">
               <span>Director: </span>
               <span>{movie.Director.Name}</span>
             </h5>
@@ -39,11 +45,11 @@ export const MovieView = ({ movie, onBackClick }) => {
           <div className="text-decoration-underline mb-2">Description: </div>
           <span>{movie.Description}</span>
         </div>
-        <div className="mt-auto text-start mb-md-4">
-          <Button className="secondary" onClick={onBackClick} size="lg">
+        <Link to={`/`} className="mt-auto text-start mb-md-4">
+          <Button className="secondary" size="lg">
             Back
           </Button>
-        </div>
+        </Link>
       </Col>
     </Row>
   );
@@ -51,21 +57,23 @@ export const MovieView = ({ movie, onBackClick }) => {
 
 // Here is where we define all the props constraints for the MovieCard
 MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string,
-    Description: PropTypes.string,
-    ImagePath: PropTypes.string,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }).isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string.isRequired,
-      Death: PropTypes.string.isRequired,
-    }).isRequired,
-    Featured: PropTypes.bool,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      Title: PropTypes.string,
+      Description: PropTypes.string,
+      ImagePath: PropTypes.string,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+      }).isRequired,
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired,
+        Birth: PropTypes.string.isRequired,
+        Death: PropTypes.string.isRequired,
+      }).isRequired,
+      Featured: PropTypes.bool,
+    })
+  ).isRequired,
+  //onBackClick: PropTypes.func.isRequired,
 };
