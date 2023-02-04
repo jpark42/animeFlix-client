@@ -12,11 +12,7 @@ import "./index.scss";
 
 // Main component (will eventually use all the others)
 const MyAnimeFlixApp = () => {
-  return (
-    <Container className="my-4 fluid">
-      <MainView />
-    </Container>
-  );
+  return <MainView />;
 };
 
 // Finds the root of your app

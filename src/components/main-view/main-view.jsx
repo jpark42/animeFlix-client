@@ -7,6 +7,8 @@ import { SignupView } from "../signup-view/signup-view";
 import { API_URL } from "../../constants";
 import { Row, Col, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 
 import "../../index.scss";
 
@@ -58,107 +60,115 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <Row className="justify-content-md-center">
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <SignupView />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <div className="mx-4 mt-2 text-center login-font">
-                      Login
-                    </div>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col md={8}>
-                    <MovieView movies={movies} />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <>
-                    {movies.map(
-                      (
-                        movie //Map() method creates a new array populated with the results of calling a provided function on every element in the calling array
-                      ) => (
-                        <Col
-                          key={movie.id} // Key attribute must be unique and is used so that React can easily find elements in your list to be changed or removed from the DOM
-                          className="mb-5"
-                          xs={12}
-                          sm={6}
-                          md={4}
-                        >
-                          <MovieCard movieData={movie} />
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
+          setUser(null);
+        }}
+      />
+      <Container className="my-4 fluid">
+        <Row className="justify-content-md-center">
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={5}>
+                      <SignupView />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={5}>
+                      <div className="mx-4 mt-2 text-center login-font">
+                        Login
+                      </div>
+                      <LoginView
+                        onLoggedIn={(user, token) => {
+                          setUser(user);
+                          setToken(token);
+                        }}
+                      />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/movies/:movieId"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <Col md={8}>
+                      <MovieView movies={movies} />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <>
+                      {movies.map(
+                        (
+                          movie //Map() method creates a new array populated with the results of calling a provided function on every element in the calling array
+                        ) => (
+                          <Col
+                            key={movie.id} // Key attribute must be unique and is used so that React can easily find elements in your list to be changed or removed from the DOM
+                            className="mb-5"
+                            xs={12}
+                            sm={6}
+                            md={4}
+                          >
+                            <MovieCard movieData={movie} />
+                          </Col>
+                        )
+                      )}
+                      <Row>
+                        <Col className="mt-auto text-center">
+                          <Button
+                            onClick={() => {
+                              setUser(null); //nullify user once user logs out
+                              setToken(null); //nullify token once user logs out
+                              localStorage.clear(); //clear localStorage once user logs out. If you refresh, user will have to login again
+                            }}
+                            className="mb-5 secondary w-auto"
+                            size="lg"
+                          >
+                            Logout
+                          </Button>
                         </Col>
-                      )
-                    )}
-                    <Row>
-                      <Col className="mt-auto text-center">
-                        <Button
-                          onClick={() => {
-                            setUser(null); //nullify user once user logs out
-                            setToken(null); //nullify token once user logs out
-                            localStorage.clear(); //clear localStorage once user logs out. If you refresh, user will have to login again
-                          }}
-                          className="mb-5 secondary w-auto"
-                          size="lg"
-                        >
-                          Logout
-                        </Button>
-                      </Col>
-                    </Row>
-                  </>
-                )}
-              </>
-            }
-          />
-        </Routes>
-      </Row>
+                      </Row>
+                    </>
+                  )}
+                </>
+              }
+            />
+          </Routes>
+        </Row>
+      </Container>
     </BrowserRouter>
   );
 };
