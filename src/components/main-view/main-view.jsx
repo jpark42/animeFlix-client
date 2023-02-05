@@ -4,6 +4,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { ProfileView } from "../profile-view/profile-view";
 import { API_URL } from "../../constants";
 import { Row, Col, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -64,6 +65,8 @@ export const MainView = () => {
         user={user}
         onLoggedOut={() => {
           setUser(null);
+          setToken(null);
+          localStorage.clear();
         }}
       />
       <Container className="my-4 fluid">
@@ -91,9 +94,6 @@ export const MainView = () => {
                     <Navigate to="/" />
                   ) : (
                     <Col md={5}>
-                      <div className="mx-4 mt-2 text-center login-font">
-                        Login
-                      </div>
                       <LoginView
                         onLoggedIn={(user, token) => {
                           setUser(user);
@@ -115,7 +115,15 @@ export const MainView = () => {
                     <Col>The list is empty!</Col>
                   ) : (
                     <Col md={8}>
-                      <MovieView movies={movies} />
+                      <MovieView
+                        movies={movies}
+                        user={user}
+                        updateUserOnFav={(user) => {
+                          console.log("Update User called", user);
+                          setUser(user);
+                          localStorage.setItem("user", JSON.stringify(user));
+                        }}
+                      />
                     </Col>
                   )}
                 </>
@@ -142,7 +150,18 @@ export const MainView = () => {
                             sm={6}
                             md={4}
                           >
-                            <MovieCard movieData={movie} />
+                            <MovieCard
+                              movieData={movie}
+                              user={user}
+                              updateUserOnFav={(user) => {
+                                console.log("Update User called", user);
+                                setUser(user);
+                                localStorage.setItem(
+                                  "user",
+                                  JSON.stringify(user)
+                                );
+                              }}
+                            />
                           </Col>
                         )
                       )}
@@ -162,6 +181,22 @@ export const MainView = () => {
                         </Col>
                       </Row>
                     </>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/users:username"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <Col>
+                      <ProfileView movies={movies} />
+                    </Col>
                   )}
                 </>
               }

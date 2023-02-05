@@ -1,6 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 
-export const EntranceGreating = () => {
+export const EntranceGreeting = () => {
   return (
     <Row className="d-flex flex-column justify-content-center px-3">
       <Col>

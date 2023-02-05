@@ -12,13 +12,13 @@ export const MovieView = ({ movies }) => {
   return (
     //Make it so that the img goes on top of the movie text when screen is smaller
     <Row className="d-flex flex-row-reverse p-3">
-      <Col md={5} sm={12} className="mb-4 text-center text-md-end">
+      <Col lg={5} md={12} sm={12} className="mb-4 text-center">
         <img
           src={movie.ImagePath}
           className="img-fluid h-100 w-auto movie-view-img"
         />
       </Col>
-      <Col md={7} className="d-flex flex-column">
+      <Col lg={7} className="d-flex flex-column">
         <Row className="d-flex flex-row justify-content-between">
           <Col className="d-flex flex-column">
             <h3 className="my-0 fw-bolder">
@@ -32,11 +32,11 @@ export const MovieView = ({ movies }) => {
           </Col>
         </Row>
         <Row className="my-0">
-          <Col md={6} className="mb-2 text-start text-left movie-header-font">
+          <Col className="mb-2 text-start text-left movie-header-font">
             <span>Genre: </span>
             <span>{movie.Genre.Name}</span>
           </Col>
-          <Col md={6} className="mb-2 text-middle movie-header-font">
+          <Col className="mb-2 text-middle movie-header-font">
             <span>Featured: </span>
             <span>{movie.Featured ? "Yes" : "No"}</span>
           </Col>

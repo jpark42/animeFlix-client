@@ -3,13 +3,7 @@ import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar
-      collapseOnSelect
-      expand="md"
-      bg="light"
-      variant="light"
-      sticky="top"
-    >
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/" className="h2 my-auto">
           AnimeFlix

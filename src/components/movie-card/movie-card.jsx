@@ -27,7 +27,7 @@ export const MovieCard = ({ movieData }) => {
           to={`/movies/${encodeURIComponent(movieData.id)}`}
           className="mt-auto text-center"
         >
-          <Button className="main" variant="link">
+          <Button className="main mt-2" size="sm">
             Details
           </Button>
         </Link>

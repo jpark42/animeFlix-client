@@ -18,10 +18,12 @@
   "homepage": "https://github.com/jpark42/animeFlix-client#readme",
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-router": "^6.8.0",
     "react-router-dom": "^6.8.0"
   },
