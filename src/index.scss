@@ -29,6 +29,19 @@ $body-color: $color;
   font-size: x-small;
 }
 
+.favorite-movie {
+  color: crimson !important; 
+}
+
+.favorite-icon {
+  color: #6c757d; 
+  font-size: 35px;
+}
+
+.favorite-icon:hover {
+  color: crimson; 
+}
+
 Button.main {
   padding: 4px 12px 4px 12px;
   color: $color;

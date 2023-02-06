@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FavoriteIcon } from "../favorite-icon/favorite-icon";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movieData }) => {
+export const MovieCard = ({ movieData, user, updateUserOnFav }) => {
   return (
     <Card className="h-100 card-color">
       <Row>
@@ -23,14 +24,25 @@ export const MovieCard = ({ movieData }) => {
         <Card.Text className="my-0">
           <h5>{movieData.Director.Name}</h5>
         </Card.Text>
-        <Link
-          to={`/movies/${encodeURIComponent(movieData.id)}`}
-          className="mt-auto text-center"
-        >
-          <Button className="main mt-2" size="sm">
-            Details
-          </Button>
-        </Link>
+        <Row className="d-flex flex-row justify-content-between align-items-baseline mt-auto">
+          <Col className="text-start">
+            <FavoriteIcon
+              user={user}
+              movie={movieData}
+              updateUserOnFav={updateUserOnFav}
+            />
+          </Col>
+          <Col className="text-end">
+            <Link
+              to={`/movies/${encodeURIComponent(movieData.id)}`}
+              className="mt-auto text-center"
+            >
+              <Button className="main mt-2" size="sm">
+                Details
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </Card.Body>
     </Card>
   );

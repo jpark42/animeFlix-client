@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 import { Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { FavoriteIcon } from "../favorite-icon/favorite-icon";
 
-export const MovieView = ({ movies }) => {
+// MovieView receives property from MainView movies
+export const MovieView = ({ movies, user, updateUserOnFav }) => {
+  console.log("MovieView prop", updateUserOnFav);
   const { movieId } = useParams();
-
   const movie = movies.find((m) => m.id === movieId);
 
   return (
-    //Make it so that the img goes on top of the movie text when screen is smaller
     <Row className="d-flex flex-row-reverse p-3">
       <Col lg={5} md={12} sm={12} className="mb-4 text-center">
         <img
@@ -45,11 +46,22 @@ export const MovieView = ({ movies }) => {
           <div className="text-decoration-underline mb-2">Description: </div>
           <span>{movie.Description}</span>
         </div>
-        <Link to={`/`} className="mt-auto text-start mb-md-4">
-          <Button className="secondary" size="lg">
-            Back
-          </Button>
-        </Link>
+        <Row className="d-flex flex-row justify-content-between mt-auto mb-md-4">
+          <Col className="text-start">
+            <FavoriteIcon
+              user={user}
+              movie={movie}
+              updateUserOnFav={updateUserOnFav}
+            />
+          </Col>
+          <Col className="mt-auto text-start mb-md-4">
+            <Link to={`/`}>
+              <Button className="secondary" size="lg">
+                Back
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </Col>
     </Row>
   );

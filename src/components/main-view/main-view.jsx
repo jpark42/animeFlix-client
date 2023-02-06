@@ -5,6 +5,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
+
 import { API_URL } from "../../constants";
 import { Row, Col, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -186,7 +187,7 @@ export const MainView = () => {
               }
             />
             <Route
-              path="/users:username"
+              path="/users/:username"
               element={
                 <>
                   {!user ? (
