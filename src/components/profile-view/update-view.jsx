@@ -59,13 +59,13 @@ export const UpdateView = ({ storedToken, storedUser }) => {
   };
 
   return (
-    <Row className="mt-2">
-      <Col md={5}>
-        <CardGroup>
-          <Card className="border-0">
-            <Card.Body>
-              <div className="text-start h2 mb-0">Update user info</div>
-              <Form onSubmit={handleSubmit}>
+    <CardGroup>
+      <Card className="border-0 login-card">
+        <Card.Body>
+          <div className="text-start h2 mb-0">Update user info</div>
+          <Form onSubmit={handleSubmit}>
+            <Row className="mt-2 d-flex justify-content-between">
+              <Col md={6}>
                 <Form.Group controlId="formUsername" className="mt-2">
                   <Form.Label>Username:</Form.Label>
                   <Form.Control
@@ -77,6 +77,8 @@ export const UpdateView = ({ storedToken, storedUser }) => {
                     placeholder="Enter your username"
                   />
                 </Form.Group>
+              </Col>
+              <Col md={6}>
                 <Form.Group controlId="formPassword" className="mt-2">
                   <Form.Label>Password:</Form.Label>
                   <Form.Control
@@ -88,6 +90,10 @@ export const UpdateView = ({ storedToken, storedUser }) => {
                     placeholder="Create a password"
                   />
                 </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6}>
                 <Form.Group controlId="formEmail" className="mt-2">
                   <Form.Label>Email:</Form.Label>
                   <Form.Control
@@ -103,6 +109,8 @@ export const UpdateView = ({ storedToken, storedUser }) => {
                     We'll never share your email with anyone else.
                   </p>
                 </Form.Text>
+              </Col>
+              <Col md={6}>
                 <Form.Group controlId="formBirthday" className="mt-2">
                   <Form.Label>Birthday:</Form.Label>
                   <Form.Control
@@ -112,18 +120,18 @@ export const UpdateView = ({ storedToken, storedUser }) => {
                     required
                   />
                 </Form.Group>
-                <Row>
-                  <Col className="text-center">
-                    <Button className="secondary mt-3" type="submit">
-                      Update
-                    </Button>
-                  </Col>
-                </Row>
-              </Form>
-            </Card.Body>
-          </Card>
-        </CardGroup>
-      </Col>
-    </Row>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="text-center">
+                <Button className="secondary mt-3" type="submit">
+                  Update
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Card.Body>
+      </Card>
+    </CardGroup>
   );
 };

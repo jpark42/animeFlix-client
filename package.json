@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jpark42/animeFlix-client#readme",
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "history": "^5.3.0",
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

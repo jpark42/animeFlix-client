@@ -5,6 +5,8 @@ import { Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movieData, user, updateUserOnFav }) => {
+  const favoriteMovies = user.FavoriteMovies;
+  const isFavorite = favoriteMovies.some((movieId) => movieData.id === movieId);
   return (
     <Card className="h-100 card-color">
       <Row>
@@ -29,15 +31,16 @@ export const MovieCard = ({ movieData, user, updateUserOnFav }) => {
             <FavoriteIcon
               user={user}
               movie={movieData}
+              isFavorite={isFavorite}
               updateUserOnFav={updateUserOnFav}
             />
           </Col>
           <Col className="text-end">
             <Link
               to={`/movies/${encodeURIComponent(movieData.id)}`}
-              className="mt-auto text-center"
+              className=" text-center"
             >
-              <Button className="main mt-2" size="sm">
+              <Button className="main" size="sm">
                 Details
               </Button>
             </Link>

@@ -29,7 +29,7 @@ export const DeleteUser = ({ storedToken, storedUser }) => {
   };
 
   return (
-    <Col md={5} className="mt-3 text-center px-4">
+    <Col md={12} className="mt-3 text-center px-4">
       <div>
         <Button
           onClick={() => handleDeregister(storedUser._id)}

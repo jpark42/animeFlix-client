@@ -10,7 +10,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto" style={{ width: "100%" }}>
             {!user && (
               <>
                 <Nav.Link as={Link} to="/login">
@@ -29,7 +29,13 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 <Nav.Link as={Link} to={`/users/${user.Username}`}>
                   Profile
                 </Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>Sign out</Nav.Link>
+                <Nav.Link
+                  className="justify-content-end"
+                  onClick={onLoggedOut}
+                  style={{ marginLeft: "auto" }}
+                >
+                  Sign out
+                </Nav.Link>
               </>
             )}
           </Nav>

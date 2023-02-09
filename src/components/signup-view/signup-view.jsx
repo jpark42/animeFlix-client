@@ -33,14 +33,21 @@ export const SignupView = () => {
       headers: {
         "Content-type": "application/json",
       },
-    }).then((response) => {
-      if (response.ok) {
-        alert("Signup successful!");
-        // window.location.reload(); //The page reloads when the user signs up sucessfully so that the new user can login
-      } else {
-        alert("Signup failed");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful!");
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        if (data.error) {
+          alert(data.error);
+        } else {
+          alert("Login Failed");
+        }
+      });
   };
 
   return (

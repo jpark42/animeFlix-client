@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 
 // to get right color of Icon we need to refresh the page
-export const FavoriteIcon = ({ user, movie, updateUserOnFav }) => {
+export const FavoriteIcon = ({ isFavorite, user, movie, updateUserOnFav }) => {
   const token = localStorage.getItem("token");
-
-  const alreadyFavorite = user.FavoriteMovies.find(
-    (favMovieId) => favMovieId === movie.id
-  );
+  const [favorite, setFavorite] = useState(isFavorite);
 
   const toggleFavorite = () => {
     if (!token) return;
@@ -23,18 +20,13 @@ export const FavoriteIcon = ({ user, movie, updateUserOnFav }) => {
     };
 
     let resultAlert = "";
-    let iconChange;
 
-    if (alreadyFavorite) {
+    if (favorite) {
       requestOptions.method = "DELETE";
       resultAlert = `${movie.Title} is deleted from the list of favorites`;
-      iconChange = () =>
-        document.querySelector("svg").classList.remove("favorite-movie");
     } else {
       requestOptions.method = "POST";
       resultAlert = `${movie.Title} is added to the list of favorites`;
-      iconChange = () =>
-        document.querySelector("svg").classList.add("favorite-movie");
     }
 
     fetch(url, requestOptions)
@@ -44,7 +36,7 @@ export const FavoriteIcon = ({ user, movie, updateUserOnFav }) => {
         alert(`${resultAlert}`);
         // console.log(updateUserOnFav);
         updateUserOnFav(data);
-        document.querySelector("svg").classList.add("favorite-movie");
+        setFavorite(!favorite);
       })
       .catch((e) => {
         alert("Something went wrong");
@@ -57,7 +49,7 @@ export const FavoriteIcon = ({ user, movie, updateUserOnFav }) => {
       className="favorite-icon"
       id="favMovieButton"
     >
-      {alreadyFavorite ? <FaHeart className="favorite-movie" /> : <FaHeart />}
+      <FaHeart className={`${favorite ? "favorite-movie" : ""}`} />
     </Link>
   );
 };

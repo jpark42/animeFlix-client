@@ -54,7 +54,7 @@ export const MovieView = ({ movies, user, updateUserOnFav }) => {
               updateUserOnFav={updateUserOnFav}
             />
           </Col>
-          <Col className="mt-auto text-start mb-md-4">
+          <Col className="mt-auto text-end mb-md-4">
             <Link to={`/`}>
               <Button className="secondary" size="lg">
                 Back
