@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 
-// to get right color of Icon we need to refresh the page
 export const FavoriteIcon = ({ isFavorite, user, movie, updateUserOnFav }) => {
   const token = localStorage.getItem("token");
   const [favorite, setFavorite] = useState(isFavorite);

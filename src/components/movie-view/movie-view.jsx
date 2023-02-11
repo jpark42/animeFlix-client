@@ -10,6 +10,8 @@ export const MovieView = ({ movies, user, updateUserOnFav }) => {
   console.log("MovieView prop", updateUserOnFav);
   const { movieId } = useParams();
   const movie = movies.find((m) => m.id === movieId);
+  const favoriteMovies = user.FavoriteMovies;
+  const isFavorite = favoriteMovies.some((movieId) => movie.id === movieId);
 
   return (
     <Row className="d-flex flex-row-reverse p-3">
@@ -51,6 +53,7 @@ export const MovieView = ({ movies, user, updateUserOnFav }) => {
             <FavoriteIcon
               user={user}
               movie={movie}
+              isFavorite={isFavorite}
               updateUserOnFav={updateUserOnFav}
             />
           </Col>

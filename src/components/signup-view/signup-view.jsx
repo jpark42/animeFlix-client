@@ -33,21 +33,19 @@ export const SignupView = () => {
       headers: {
         "Content-type": "application/json",
       },
-    })
-      .then((response) => {
-        if (response.ok) {
-          alert("Signup successful!");
-        } else {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        if (data.error) {
-          alert(data.error);
-        } else {
-          alert("Login Failed");
-        }
-      });
+    }).then((response) => {
+      if (response.ok) {
+        alert("Signup successful!");
+      } else {
+        response.json().then((data) => {
+          if (data.error) {
+            alert(data.error);
+          } else {
+            alert("Signup Failed");
+          }
+        });
+      }
+    });
   };
 
   return (
