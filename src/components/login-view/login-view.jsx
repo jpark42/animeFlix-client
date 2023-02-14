@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  CardGroup,
+  Form,
+  Row,
+  Col,
+  Container,
+} from "react-bootstrap";
 import { API_URL } from "../../constants";
+import { EntranceGreeting } from "../entrance-greeting/entrance-greeting";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -40,32 +49,49 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)} //Assigning the value of the form fields to two new state variables so you can use them here. This is known as binding
-          minLength="5"
-          required
-        />
-      </Form.Group>
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} //Assigning the value of the form fields to two new state variables so you can use them here. This is known as binding
-          minLength="5"
-          required
-        />
-      </Form.Group>
-      <div className="mt-2 text-center">
-        <Button className="main" type="submit">
-          Login
-        </Button>
-      </div>
-    </Form>
+    <Container>
+      <EntranceGreeting />
+      <Row>
+        <Col>
+          <CardGroup>
+            <Card className="border-0 login-card">
+              <Card.Body>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId="formUsername" className="mt-2">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)} //Assigning the value of the form fields to two new state variables so you can use them here. This is known as binding
+                      minLength="5"
+                      required
+                      placeholder="Enter your username"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formPassword" className="mt-3">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)} //Assigning the value of the form fields to two new state variables so you can use them here. This is known as binding
+                      minLength="5"
+                      required
+                      placeholder="Enter your password"
+                    />
+                  </Form.Group>
+                  <Row>
+                    <Col className="text-center">
+                      <Button className="main mt-3" type="submit">
+                        Login
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
+    </Container>
   );
 };

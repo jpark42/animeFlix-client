@@ -21,6 +21,27 @@ $body-color: $color;
   color: $secondary-color;
 }
 
+.login-card {
+  color: $primary-color;
+}
+
+.muted-text-font {
+  font-size: x-small;
+}
+
+.favorite-movie {
+  color: crimson !important; 
+}
+
+.favorite-icon {
+  color: #6c757d; 
+  font-size: 35px;
+}
+
+.favorite-icon:hover {
+  color: crimson; 
+}
+
 Button.main {
   padding: 4px 12px 4px 12px;
   color: $color;
@@ -28,6 +49,12 @@ Button.main {
   border: none;
   border-radius: 4px;
   cursor: "pointer"; 
+  transition-duration: 0.4s;
+}
+
+Button.main:hover {
+  background-color: $accent-color;
+  color: $primary-color;
 }
 
 Button.secondary {
@@ -37,6 +64,12 @@ Button.secondary {
   border: none;
   border-radius: 4px;
   cursor: "pointer"; 
+  transition-duration: 0.4s;
+}
+
+Button.secondary:hover {
+  background-color: $secondary-color;
+  color: $color;
 }
 
 .movie-view-img {
