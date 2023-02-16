@@ -1,1 +1,5 @@
-AnimeFlix
+<h1> AnimeFlix Client-side App </h1>
+
+<h2> Description </h2>
+<p> The client side part of AnimeFlix was built using React.js. It supports the server-side API by utilizing user-requests and rendering the responses from the server into UI.
+</p>
