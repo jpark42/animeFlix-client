@@ -20,6 +20,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null); //When you reload the page, the user and token will be initialized with what is in localStorage. If it’s empty, both will be initialized with null
   const [token, setToken] = useState(storedToken ? storedToken : null); //null represents the state when no user is logged in for both token and user
   const [movies, setMovies] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
   //Token state is initally blank, meaning no movies are loaded. This will set it to the token you get back from the login API. At that moment, the UI will update and load the list of movies using the token
   useEffect(() => {
@@ -54,11 +55,27 @@ export const MainView = () => {
         console.log(data);
         //setMovies callback from useState() Hook updates the state of the component, updating the UI
         setMovies(moviesFromApi);
+        setSearchResults(moviesFromApi);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [token]); //2nd arugment of useEffect() is token as a dependency array. It ensures fetch is called every time token changes
+
+  // Execute the search on mobies
+  function movieSearch(searchString) {
+    // if the search field is empty, restore the original movie list to the search result
+    if (!searchString.trim()) {
+      setSearchResults(movies);
+    } else {
+      // if the search field is not empty, filter the original movie list based on the search field value and update the results
+      setSearchResults(
+        movies.filter((movie) =>
+          movie.Title.toLowerCase().includes(searchString)
+        )
+      );
+    }
+  }
 
   return (
     <BrowserRouter>
@@ -69,6 +86,7 @@ export const MainView = () => {
           setToken(null);
           localStorage.clear();
         }}
+        onSearch={movieSearch}
       />
       <Container className="my-4 fluid">
         <Row className="justify-content-md-center">
@@ -136,11 +154,11 @@ export const MainView = () => {
                 <>
                   {!user ? (
                     <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
+                  ) : searchResults.length === 0 ? (
                     <Col>The list is empty!</Col>
                   ) : (
                     <>
-                      {movies.map(
+                      {searchResults.map(
                         (
                           movie //Map() method creates a new array populated with the results of calling a provided function on every element in the calling array
                         ) => (
@@ -196,7 +214,11 @@ export const MainView = () => {
                     <Col>The list is empty!</Col>
                   ) : (
                     <Col>
-                      <ProfileView movies={movies} />
+                      <ProfileView
+                        movies={movies}
+                        user={user}
+                        setUser={setUser}
+                      />
                     </Col>
                   )}
                 </>

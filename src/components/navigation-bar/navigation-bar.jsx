@@ -1,7 +1,13 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
+  const handleSearch = (searchString) => {
+    onSearch(searchString);
+  };
+
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" sticky="top">
       <Container>
@@ -23,19 +29,31 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">
-                  Home
-                </Nav.Link>
-                <Nav.Link as={Link} to={`/users/${user.Username}`}>
-                  Profile
-                </Nav.Link>
-                <Nav.Link
-                  className="justify-content-end"
-                  onClick={onLoggedOut}
-                  style={{ marginLeft: "auto" }}
-                >
-                  Sign out
-                </Nav.Link>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/">
+                    Home
+                  </Nav.Link>
+                  <Nav.Link as={Link} to={`/users/${user.Username}`}>
+                    Profile
+                  </Nav.Link>
+                  <Nav>
+                    <Form.Control
+                      id="searchbar"
+                      type="search"
+                      placeholder="Search.."
+                      onChange={(event) => handleSearch(event.target.value)}
+                    />
+                  </Nav>
+                </Nav>
+                <Nav>
+                  <Nav.Link
+                    className="justify-content-end"
+                    onClick={onLoggedOut}
+                    style={{ marginLeft: "auto" }}
+                  >
+                    Sign out
+                  </Nav.Link>
+                </Nav>
               </>
             )}
           </Nav>

@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Button, Form, Row, Col, CardGroup, Card } from "react-bootstrap";
 import { API_URL } from "../../constants";
 
-export const UpdateView = ({ storedToken, storedUser }) => {
+export const UpdateView = ({ storedToken, user, setUser }) => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [user, setUser] = useState(storedUser ? storedUser : null);
 
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState();
