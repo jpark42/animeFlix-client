@@ -5,5 +5,5 @@
 </p>
 
 <h3>
-  Deployed at: <a href="https://animeflixapp.netlify.app/" target="_blank"></a>
+  Deployed at: https://animeflixapp.netlify.app/
 </h3>
